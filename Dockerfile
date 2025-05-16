@@ -20,7 +20,7 @@ RUN ls
 
 COPY start_zergpool.sh .
 
-RUN chmod +x SRBMiner-MULTI
+#RUN chmod +x SRBMiner-MULTI
 RUN chmod +x start_zergpool.sh
 
 #ENTRYPOINT ["./start_zergpool.sh"]
