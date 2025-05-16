@@ -1,16 +1,8 @@
 FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 
-ENV ALGO="sha3x"
-ENV POOL_ADDRESS="ca.luckypool.io:6118"
-ENV WALLET_USER="12D1CtJnkqS4CMCFY2No5xeUWpzjH1rZkGHyZoHqYV14aE9mLLVyeuZj1siCh4gsMJgVZKa5aCraZGTEjB5n3oQjm2Y=5g.salad"
-ENV PASSWORD="salad"
-ENV EXTRAS=""
-
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install curl wget xz-utils
+RUN apt-get -y install curl xz-utils
 RUN cd /opt
-RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.gz -o SRBMiner-Multi.tar.gz
+RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.gz -o /opt/SRBMiner-Multi.tar.gz
 RUN tar xf SRBMiner-Multi.tar.gz
 RUN rm -rf SRBMiner-Multi.tar.gz
 
@@ -20,4 +12,4 @@ RUN cd /opt/SRBMiner-Multi-2-8-8/
 RUN chmod +x /opt/SRBMiner-Multi-2-8-8/SRBMiner-MULTI
 
 ENTRYPOINT ["/opt/SRBMiner-Multi-2-8-8/SRBMiner-MULTI"]
-CMD ["--algorithm", "sha3x", "--pool", "ca.luckypool.io:6118", "--wallet", "12D1CtJnkqS4CMCFY2No5xeUWpzjH1rZkGHyZoHqYV14aE9mLLVyeuZj1siCh4gsMJgVZKa5aCraZGTEjB5n3oQjm2Y=5g.salad"]
+CMD ["--algorithm", "sha3x", "--pool", "ca.luckypool.io:6118", "--wallet", "12BrRYQMCQkqQCodzQTJbg3nBvRP8n4wRPUHWxwKNQkHJU9VAKqxcrFyTXsdqAAhuvDEbeVRtPb4ZpPskrbUPzG3uRg=20G.salad]
