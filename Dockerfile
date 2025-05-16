@@ -1,7 +1,7 @@
 FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 
 #RUN apt-get -y install curl
-RUN apt-get -y install xz-utils
+#RUN apt-get -y install xz-utils
 RUN cd /opt
 RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.gz -o /opt/SRBMiner-Multi.tar.gz
 RUN tar xf SRBMiner-Multi.tar.gz
