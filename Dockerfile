@@ -15,6 +15,8 @@ RUN tar xf SRBMiner-Multi.tar.gz
 RUN rm -rf SRBMiner-Multi.tar.gz
 
 WORKDIR /opt/SRBMiner-Multi-2-8-8/
+RUN cd /opt/SRBMiner-Multi-2-8-8/
+
 COPY start_zergpool.sh .
 
 RUN chmod +x SRBMiner-MULTI
