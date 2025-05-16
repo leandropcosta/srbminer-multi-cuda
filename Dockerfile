@@ -13,9 +13,8 @@ RUN cd /opt
 RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.gz -o SRBMiner-Multi.tar.gz
 RUN tar xf SRBMiner-Multi.tar.gz
 RUN rm -rf SRBMiner-Multi.tar.gz
-RUN mv /opt/SRBMiner-Multi-2-8-8/ /opt/SRBMiner-Multi/
 
-WORKDIR /opt/SRBMiner-Multi/
+WORKDIR /opt/SRBMiner-Multi-2-8-8/
 COPY start_zergpool.sh .
 
 RUN chmod +x start_zergpool.sh
