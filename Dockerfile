@@ -1,18 +1,28 @@
 FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
-RUN apt-get -y install curl
-RUN apt-get -y install xz-utils
-RUN cd /opt
-RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.gz -o /opt/SRBMiner-Multi.tar.gz
-RUN tar xf SRBMiner-Multi.tar.gz
-RUN rm -rf SRBMiner-Multi.tar.gz
+ENV ALGO="sha3x"
+ENV POOL_ADDRESS="ca.luckypool.io:6118"
+ENV WALLET_USER="12BrRYQMCQkqQCodzQTJbg3nBvRP8n4wRPUHWxwKNQkHJU9VAKqxcrFyTXsdqAAhuvDEbeVRtPb4ZpPskrbUPzG3uRg"
 
-WORKDIR /opt/SRBMiner-Multi-2-8-8/
-RUN cd /opt/SRBMiner-Multi-2-8-8/
+RUN apt-get -y update \
+    && apt-get -y upgrade \
+    && apt-get -y install curl wget xz-utils \
+    && cd /opt \
+    && curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.xz -o SRBMiner-Multi.tar.xz \
+    && tar xf SRBMiner-Multi.tar.xz \
+    && rm -rf SRBMiner-Multi.tar.xz \
+    && mv /opt/SRBMiner-Multi-2-8-8/ /opt/SRBMiner-Multi/ \
+    && apt-get -y purge xz-utils \
+    && apt-get -y autoremove --purge \
+    && apt-get -y clean \
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
-RUN chmod +x /opt/SRBMiner-Multi-2-8-8/SRBMiner-MULTI
+WORKDIR /opt/SRBMiner-Multi/
+COPY start_zergpool.sh .
 
-ENTRYPOINT ["/opt/SRBMiner-Multi-2-8-8/SRBMiner-MULTI"]
-CMD ["--algorithm", "sha3x", "--pool", "ca.luckypool.io:6118", "--wallet", "12BrRYQMCQkqQCodzQTJbg3nBvRP8n4wRPUHWxwKNQkHJU9VAKqxcrFyTXsdqAAhuvDEbeVRtPb4ZpPskrbUPzG3uRg=20G.salad]
+RUN chmod +x start_zergpool.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["./start_zergpool.sh"]
+CMD ["--api-enable", "--api-port", "80", "--disable-auto-affinity", "--disable-ptx-check"]
