@@ -6,9 +6,9 @@ ENV WALLET_USER="12BrRYQMCQkqQCodzQTJbg3nBvRP8n4wRPUHWxwKNQkHJU9VAKqxcrFyTXsdqAA
 
 RUN apt-get -y update \
     && apt-get -y upgrade \
-    && apt-get -y install curl wget xz-utils \
-    && cd /opt \
-    && curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.xz -o SRBMiner-Multi.tar.xz \
+    && apt-get -y install curl wget xz-utils
+RUN cd /opt 
+RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.xz -o SRBMiner-Multi.tar.xz \
     && tar xf SRBMiner-Multi.tar.xz \
     && rm -rf SRBMiner-Multi.tar.xz \
     && mv /opt/SRBMiner-Multi-2-8-8/ /opt/SRBMiner-Multi/ \
