@@ -17,9 +17,12 @@ RUN rm -rf SRBMiner-Multi.tar.gz
 WORKDIR /opt/SRBMiner-Multi-2-8-8/
 COPY start_zergpool.sh .
 
+RUN chmod +x SRBMiner-MULTI
 RUN chmod +x start_zergpool.sh
 
 EXPOSE 80
 
 #ENTRYPOINT ["./start_zergpool.sh"]
 #CMD ["", ""]
+ENTRYPOINT ["/opt/SRBMiner-Multi-2-8-8/SRBMiner-MULTI"]
+CMD ["--algorithm", "sha3x", "--pool", "ca.luckypool.io:6118", "--wallet", "12D1CtJnkqS4CMCFY2No5xeUWpzjH1rZkGHyZoHqYV14aE9mLLVyeuZj1siCh4gsMJgVZKa5aCraZGTEjB5n3oQjm2Y=5g.salad"]
