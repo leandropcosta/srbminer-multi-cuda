@@ -10,9 +10,9 @@ RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install curl wget xz-utils
 RUN cd /opt
-RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.xz -o SRBMiner-Multi.tar.xz
-RUN tar xf SRBMiner-Multi.tar.xz
-RUN rm -rf SRBMiner-Multi.tar.xz
+RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.gz -o SRBMiner-Multi.tar.gz
+RUN tar xf SRBMiner-Multi.tar.gz
+RUN rm -rf SRBMiner-Multi.tar.gz
 RUN mv /opt/SRBMiner-Multi-2-8-8/ /opt/SRBMiner-Multi/
 
 WORKDIR /opt/SRBMiner-Multi/
