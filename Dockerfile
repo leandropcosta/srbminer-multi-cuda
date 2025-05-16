@@ -27,4 +27,4 @@ RUN chmod +x start_zergpool.sh
 EXPOSE 80
 
 ENTRYPOINT ["./start_zergpool.sh"]
-CMD ["", "", "80"]
+CMD ["", ""]
