@@ -6,18 +6,14 @@ ENV WALLET_USER="12D1CtJnkqS4CMCFY2No5xeUWpzjH1rZkGHyZoHqYV14aE9mLLVyeuZj1siCh4g
 ENV PASSWORD="salad"
 ENV EXTRAS=""
 
-RUN apt-get -y update \
-    && apt-get -y upgrade \
-    && apt-get -y install curl wget xz-utils \
-    && cd /opt \
-    && curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.xz -o SRBMiner-Multi.tar.xz \
-    && tar xf SRBMiner-Multi.tar.xz \
-    && rm -rf SRBMiner-Multi.tar.xz \
-    && mv /opt/SRBMiner-Multi-2-8-8/ /opt/SRBMiner-Multi/ \
-    && apt-get -y purge xz-utils \
-    && apt-get -y autoremove --purge \
-    && apt-get -y clean \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install curl wget xz-utils
+RUN cd /opt
+RUN curl -L https://github.com/doktor83/SRBMiner-Multi/releases/download/2.8.8/SRBMiner-Multi-2-8-8-Linux.tar.xz -o SRBMiner-Multi.tar.xz
+RUN tar xf SRBMiner-Multi.tar.xz
+RUN rm -rf SRBMiner-Multi.tar.xz
+RUN mv /opt/SRBMiner-Multi-2-8-8/ /opt/SRBMiner-Multi/
 
 WORKDIR /opt/SRBMiner-Multi/
 COPY start_zergpool.sh .
