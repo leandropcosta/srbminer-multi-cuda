@@ -9,7 +9,7 @@ RUN apt-get -y update \
 RUN cd /opt 
 
 WORKDIR /opt/
-COPY SRBMiner-MULTI.sh .
+COPY SRBMiner-MULTI .
 
 RUN chmod +x SRBMiner-MULTI
 
