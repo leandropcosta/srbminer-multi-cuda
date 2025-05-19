@@ -6,7 +6,7 @@ ENV WALLET_USER="12BrRYQMCQkqQCodzQTJbg3nBvRP8n4wRPUHWxwKNQkHJU9VAKqxcrFyTXsdqAA
 
 RUN apt-get -y update \
     && apt-get -y upgrade
-RUN cd /opt 
+RUN cd /opt/
 
 WORKDIR /opt/
 COPY SRBMiner-MULTI .
@@ -16,4 +16,4 @@ RUN chmod +x SRBMiner-MULTI
 EXPOSE 80
 
 ENTRYPOINT ["./SRBMiner-MULTI"]
-CMD ["-algorithm", "sha3x", "--pool", "ca.luckypool.io:6118", "--wallet", "12BrRYQMCQkqQCodzQTJbg3nBvRP8n4wRPUHWxwKNQkHJU9VAKqxcrFyTXsdqAAhuvDEbeVRtPb4ZpPskrbUPzG3uRg=50G.salad"]
+CMD ["-algorithm", "randomx", "--pool", "mine-tari-monero.luckypool.io:8118", "--wallet", "12D1CtJnkqS4CMCFY2No5xeUWpzjH1rZkGHyZoHqYV14aE9mLLVyeuZj1siCh4gsMJgVZKa5aCraZGTEjB5n3oQjm2Y+47XpnLL3raj7aTCAdXFhHZUcNhumxcxfc2mvwVmFfL6udAGzuhZQExpSVyJj3yPbgLDoudJg2acaZdHdfziAbBB81RDzo89.salad"]
