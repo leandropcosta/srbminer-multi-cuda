@@ -10,8 +10,10 @@ RUN cd /opt/
 
 WORKDIR /opt/
 COPY SRBMiner-MULTI .
+COPY mine.sh .
 
 RUN chmod +x SRBMiner-MULTI
+RUN chmod +x mine.sh
 
 EXPOSE 80
 
